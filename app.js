@@ -22,7 +22,7 @@ app.post('/video',function(req,res){
         if(err){
             throw err;
         }
-var imageUrl = info.iurlsd;
+var imageUrl = info.iurlmq;
         res.render('video-info',{videoInfo:info,imgSrc:imageUrl});
     });
     

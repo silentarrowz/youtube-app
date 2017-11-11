@@ -5,8 +5,9 @@
             Youtube Video Information
         </title>
     </head>
-
-    <div>here's the info:</div>
+    <a href='/'>Back to HomePage</a>
+    <br/>
+    <br/>
     <h1>Video Info </h1>
     <h2>Video title : <%-videoInfo.title %></h2>
    <h4><img src=<%-imgSrc%> /></h4> 
@@ -14,6 +15,7 @@
     <h2>Video Description :</h2>
     <p> <%-videoInfo.description %></p>
     <h2>Video length : <%= (videoInfo.length_seconds/60) %> minutes</h2>
+    <button>Download Video Now</button>
 </body>
 
 </html>
