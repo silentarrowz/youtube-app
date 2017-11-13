@@ -4,7 +4,9 @@
   "description": "example node app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "./node_modules/.bin/nodemon app.js"
   },
   "author": "faraz ahmed",
   "license": "ISC",
@@ -14,5 +16,8 @@
     "express": "^4.16.2",
     "path": "^0.12.7",
     "ytdl-core": "^0.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
