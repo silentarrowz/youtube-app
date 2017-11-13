@@ -1,5 +1,5 @@
 {
-  "name": "example node app",
+  "name": "youtube-downloader",
   "version": "1.0.0",
   "description": "example node app",
   "main": "app.js",
