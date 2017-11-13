@@ -6,6 +6,7 @@ var ytdl = require('ytdl-core');
 var things = require('./things.js');
 var bodyParser = require('body-parser');
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
