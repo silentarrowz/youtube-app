@@ -1,21 +1,31 @@
 <html>
 <body>
     <head>
+<script>
+    
+
+function myAjaxCall(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState ===XMLHttpRequest.DONE && xhr.status ===200){
+            console.log('response has come',xhr.response);
+            return xhr.response;
+        }
+    };
+    xhr.open('GET','/filez',true);
+    xhr.send();
+};
+</script>
+            
         <title>
-            Youtube Video Information
-        </title>
+File download from client side        </title>
     </head>
     <a href='/'>Back to HomePage</a>
     <br/>
     <br/>
-    <h1>Video Info </h1>
-    <h2>Video title : <%-videoInfo.title %></h2>
-   <h4><img src=<%-imgSrc%> /></h4> 
-    <h4>Video Id : <%-videoInfo.video_id %></h4>
-    <h2>Video Description :</h2>
-    <p> <%-videoInfo.description %></p>
-    <h2>Video length : <%= (videoInfo.length_seconds/60) %> minutes</h2>
-    <button>Download Video Now</button>
+   
+    <h2>Download file <%= (videoInfo.length_seconds/60) %> minutes</h2>
+    <button onclick="myAjaxCall()">Download Video Now</button>
 </body>
 
 </html>

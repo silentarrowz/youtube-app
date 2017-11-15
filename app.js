@@ -15,18 +15,41 @@ app.get('/',function(req,res){
     //res.sendFile(path.join(__dirname + '/index.ejs'));
     res.render('index');
 });
-
+var url ='';
 app.post('/video',function(req,res){
-    var url = req.body["video-url"];
+    url = req.body["video-url"];
     ytdl.getInfo(url,function(err,info){
         if(err){
             throw err;
         }
 var imageUrl = info.iurlmq;
-        res.render('video-info',{videoInfo:info,imgSrc:imageUrl});
+        res.render('video-info',
+        {videoInfo:info,
+            imgSrc:imageUrl,
+            videoUrl:url
+        });
     });
     
     //urlname should be used in ejs template
+});
+
+app.get('/filez',function(req,res){
+    var id = req.params.id;
+    console.log('id is : ',id);
+
+  var video =   ytdl(url, { filter: (format) => format.container === 'mp4' })
+    .pipe(fs.createWriteStream('video.mp4'));
+    res.download('video.mp4');
+   
+   /*
+    ytdl.downloadFromInfo(id,{filter:'mp4'},function(err,data){
+        if(err){
+            throw err;
+        }
+        console.log(data);
+    } );
+    */
+    
 });
 
 /*
