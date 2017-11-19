@@ -35,12 +35,16 @@ var imageUrl = info.iurlmq;
 });
 
 app.get('/filez',function(req,res){
-    var id = req.params.id;
-    console.log('id is : ',id);
+    //var id = req.params.id;
+    //console.log('id is : ',id);
 
-  var video =   ytdl(url, { filter: (format) => format.container === 'mp4' })
-    .pipe(fs.createWriteStream('video.mp4'));
-    res.download('video.mp4');
+var input =  ytdl(url, { filter: (format) => format.container === 'mp4' });
+res.setHeader("Content-Disposition","attachment");
+res.setHeader("Content-Type", "application/octet-stream")
+
+    input.pipe(fs.createWriteStream('video.mp4')).on('finish',function(data){
+        res.download('video.mp4');
+    });
    
    /*
     ytdl.downloadFromInfo(id,{filter:'mp4'},function(err,data){
