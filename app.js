@@ -44,34 +44,22 @@ res.setHeader("Content-Type", "application/octet-stream")
 
     input.pipe(fs.createWriteStream('video.mp4')).on('finish',function(data){
         res.download('video.mp4');
+        fs.exists('video.mp4',function(exists){
+            if(exists){
+                fs.unlink('video.mp4');
+                
+            }
+            
+        });
+        
+//@TODO maybe fs.exists is deprecated and we should use fs.unlink only
+// tried that and it gave errors. 
+//anyways have to find out more about that        
     });
-   
-   /*
-    ytdl.downloadFromInfo(id,{filter:'mp4'},function(err,data){
-        if(err){
-            throw err;
-        }
-        console.log(data);
-    } );
-    */
+  
     
 });
 
-/*
-//Simple request time logger
-app.use( '/things' ,function(req, res, next){
-    console.log("A new request received at " + Date.now());
-    
-    //This function call is very important. It tells that more processing is
-    //required for the current request and is in the next middleware function/route handler.
-    
-    next();
- });
- 
-
-app.use('/things',things);
-
-*/
 app.get('/hello',function(req,res){
     res.send('Hello World');
 });
